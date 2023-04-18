@@ -1,33 +1,39 @@
 ﻿#include <iostream>
+#include <string>
 
 class Figure {
 public:
-    Figure() {
-        sides = 0;
+    Figure():Figure(0) {
     }
+    Figure(unsigned sides) : sides(sides) {
+        name = "Фигура";
+    }
+
     unsigned getSides() {
         return sides;
     }
-
-protected:
-    Figure(unsigned sides) : sides(sides) {
-
+    std::string getName() {
+        return name;
     }
 
+protected:
+
     unsigned sides;
+    std::string name;
+
 };
 
 class Triangle : public Figure {
 public:
     Triangle() : Figure(3) {
-
+        name = "Треугольник";
     }
 };
 
 class Quadrilateral : public Figure {
 public:
     Quadrilateral() : Figure(4) {
-
+        name = "Четырёхугольник";
     }
 };
 
@@ -39,8 +45,8 @@ int main() {
     Quadrilateral quadrilateral;
 
     std::cout << "Количество сторон:" << std::endl <<
-        "Фигура: " << figure.getSides() << std::endl <<
-        "Треугольник: " << triangle.getSides() << std::endl <<
-        "Четырёхугольник: " << quadrilateral.getSides() << std::endl;
+        figure.getName() << ": " << figure.getSides() << std::endl <<
+        triangle.getName() << ": " << triangle.getSides() << std::endl <<
+        quadrilateral.getName() << ": " << quadrilateral.getSides() << std::endl;
 
 }
